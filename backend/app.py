@@ -118,7 +118,7 @@ def google_callback():
                 print(f"Updated user with google_id: {email}")  # Debug
 
         access_token = create_access_token(identity=str(user.id))
-        frontend_url = f"http://localhost:3000/login?token={access_token}"
+        frontend_url = f"https://todo-fullstack-ruby.vercel.app/login?token={access_token}"
         print(f"Redirecting to frontend: {frontend_url}")  # Debug
         return redirect(frontend_url)
     except ValueError as e:
