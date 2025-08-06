@@ -17,7 +17,7 @@ app.config.from_object(Config)
 db.init_app(app)
 jwt = JWTManager(app)
 migrate = Migrate(app, db)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Initialize Flask-Mail
 mail = Mail(app)
