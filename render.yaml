@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: todo-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: ""
+    startCommand: gunicorn backend.app:app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: todo-db
+          property: connectionString
+      - key: SECRET_KEY
+        value: your-secret-key
+
+databases:
+  - name: todo-db
+    region: oregon
+    plan: free
