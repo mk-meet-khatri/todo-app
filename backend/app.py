@@ -24,9 +24,11 @@ mail = Mail(app)
 
 # with app.app_context():
 #     db.create_all()
-@app.before_first_request
-def create_tables():
-    db.create_all()
+def setup_database():
+    with app.app_context():
+        db.create_all()
+
+setup_database()
 
 @app.route('/register', methods=['POST'])
 def register():
