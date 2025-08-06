@@ -22,7 +22,10 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 # Initialize Flask-Mail
 mail = Mail(app)
 
-with app.app_context():
+# with app.app_context():
+#     db.create_all()
+@app.before_first_request
+def create_tables():
     db.create_all()
 
 @app.route('/register', methods=['POST'])
