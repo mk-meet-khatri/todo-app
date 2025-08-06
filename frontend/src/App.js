@@ -18,7 +18,7 @@ function App() {
     console.log("App mounted, initial token:", token);
     if (token && !window.location.search.includes("token=")) {
       console.log("Validating existing token");
-      fetch("http://localhost:5000/todos", {
+      fetch("https://todo-app-fyxu.onrender.com/todos", {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((response) => {

@@ -68,11 +68,14 @@ function Login({
     }
     const endpoint = isRegistering ? "register" : "login";
     try {
-      const response = await fetch(`http://localhost:5000/${endpoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: email, password }),
-      });
+      const response = await fetch(
+        `https://todo-app-fyxu.onrender.com/${endpoint}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: email, password }),
+        }
+      );
       const data = await response.json();
       console.log(`${endpoint} response:`, data);
       if (response.ok) {
@@ -97,7 +100,7 @@ function Login({
 
   const handleGoogleLogin = () => {
     console.log("Initiating Google login");
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = "https://todo-app-fyxu.onrender.com/auth/google";
   };
 
   // Fallback UI to prevent blank screen

@@ -23,7 +23,7 @@ function TodoList({ token }) {
   const fetchTodos = async () => {
     try {
       console.log("Fetching todos with token:", token);
-      const response = await fetch("http://localhost:5000/todos", {
+      const response = await fetch("https://todo-app-fyxu.onrender.com/todos", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ function TodoList({ token }) {
     setLoading(true); // Set loading to true
     try {
       console.log("Adding task:", newTask, "with token:", token);
-      const response = await fetch("http://localhost:5000/todos", {
+      const response = await fetch("https://todo-app-fyxu.onrender.com/todos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -122,14 +122,17 @@ function TodoList({ token }) {
     setLoading(true); // Set loading to true for update
     try {
       console.log("Updating task:", id, "to:", editText);
-      const response = await fetch(`http://localhost:5000/todos/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ task: editText }),
-      });
+      const response = await fetch(
+        `https://todo-app-fyxu.onrender.com/todos/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ task: editText }),
+        }
+      );
       const updatedTodo = await response.json();
       console.log("PUT /todos response:", updatedTodo);
       if (response.ok) {
@@ -168,13 +171,16 @@ function TodoList({ token }) {
     setLoading(true); // Set loading to true for delete
     try {
       console.log("Deleting task:", id);
-      const response = await fetch(`http://localhost:5000/todos/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://todo-app-fyxu.onrender.com/todos/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const data = await response.json();
       console.log("DELETE /todos response:", data);
       if (response.ok) {
