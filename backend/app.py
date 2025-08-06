@@ -26,6 +26,7 @@ mail = Mail(app)
 #     db.create_all()
 def setup_database():
     with app.app_context():
+        print("DATABASE_URL:", app.config["SQLALCHEMY_DATABASE_URI"])
         db.create_all()
 
 setup_database()

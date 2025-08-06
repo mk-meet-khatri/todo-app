@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URL') or 'your-full-render-db-url-here'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = environ.get('JWT_SECRET_KEY')
     GOOGLE_CLIENT_ID = environ.get('GOOGLE_CLIENT_ID')
